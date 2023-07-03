@@ -1,0 +1,94 @@
+Create a table named "sales" with the following columns:
+id: An auto-incrementing integer representing the unique identifier for each sales transaction. This column should be the primary key.
+product_name: A string column representing the name of the product sold.
+quantity: An integer column representing the quantity of the product sold.
+unit_price: A decimal column representing the price of one unit of the product.
+total_price: A decimal column representing the total price of the sales transaction (calculated as quantity * unit_price).
+customer_name: A string column representing the name of the customer who made the purchase.
+sale_date: A date column representing the date of the sales transaction.
+Insert data into the table:
+
+ 
+
+Insert at least five sales transactions into the "sales" table, each with different product names, quantities, unit prices, customer names, and sale dates.
+Retrieve data from the table:
+
+ 
+
+Write SQL queries to retrieve the following information:
+Retrieve all sales transactions made by a specific customer (e.g., customer_name = 'John Smith')
+Retrieve sales transactions made by a specific customer (e.g., customer_name = 'John Smith') and a specific product (e.g., product_name = 'Widget'):
+Retrieve sales transactions made by either a specific customer (e.g., customer_name = 'John Smith') or a specific product (e.g., product_name = 'Widget')
+Retrieve sales transactions with a quantity greater than 10 and a total price less than 100:
+Retrieve sales transactions made on a specific date (e.g., sale_date = '2023-06-30') and with a total price greater than or equal to 500:
+
+
+CODE:
+
+create database Products;
+
+use products;
+
+create table sales(id int auto_increment primary key,product_name varchar(20), quantity int, unit_price decimal(10,2), total_price decimal(10,2), customer_name varchar(20),select_date date);
+
+insert into sales(product_name, quantity, unit_price, total_price, customer_name, select_date) values("oil", 2, 100, 1000, "vinay", "2023-01-07"), ("product2", 2, 200, 2000, "mohan", "2023-02-07"), ("product3", 3, 300, 3000, "abhi", "2023-03-07"), ("product4", 4, 400, 4000, "sai", "2023-04-07"), ("product5", 5, 500, 5000, "manu", "2023-05-07");
+
+
+select * from sales where id=2;
+
+select * from sales where customer_name=sai;
+
+select * from sales where customer_name="sai" and product_name="product4";
+
+select * from sales where quantity > 2 and total_price < 10000;
+
+ select * from sales where select_date="2023-01-07" and total_price>=100;
+
+
+===========================================================================================
+
+Create a table named "employees" with the following columns:
+id: An auto-incrementing integer representing the unique identifier for each employee. This column should be the primary key.
+first_name: A string column representing the first name of the employee.
+last_name: A string column representing the last name of the employee.
+email: A string column representing the email address of the employee.
+phone_number: A string column representing the phone number of the employee.
+hire_date: A date column representing the date when the employee was hired.
+salary: A decimal column representing the salary of the employee.
+department: A string column representing the department in which the employee works.
+
+Insert data into the table:
+
+Insert at least five employees into the "employees" table, each with different first names, last names, email addresses, phone numbers, hire dates, salaries, and departments.
+
+Retrieve data from the table:
+
+Write SQL queries to retrieve the following information:
+All employees who work in a specific department (e.g., department = 'Sales').
+All employees who have a salary greater than a certain amount (e.g., salary > 50000).
+The total number of employees in the company.
+The employee(s) with the highest salary.
+The employee(s) hired on a specific date (e.g., hire_date = '2023-01-15').
+
+CODE:
+
+create database Tekworks;
+
+use tekworks;
+
+create table employees(employee_id int auto_increment primary key, first_name varchar(20), last_name varchar(20), email varchar(20), phone_number varchar(20), hire_date date, salary decimal(10,2), department varchar(20));
+
+insert into employees(first_name, last_name, email, phone_number, hire_date, salary, department) values("vinay", "eerla", "vinay@gmail.com", "9059850429", "2023-07-01", "15000", "softerware developer"),("manu", "manam", "man@gmail.com", "8465952681", "2023-07-02", "25000", "softerware developer"),("abhi", "ram", "abhi@gmail.com", "9000133661", "2023-07-03", "35000", "softerware developer"),("kajal", "agrawal", "kajal@gmail.com", "9912070317", "2023-07-04", "45000", "softerware developer"),("sai", "pallavi", "pallavi@gmail.com", "9000099990", "2023-07-05", "55000", "softerware developer");
+
+select * from employees;
+
+select * from employees where department="softerware developer";
+
+select * from employees where salary > 20000;
+
+select count(*) as total_employees from employees;
+
+select * from employees where salary =(select max(salary) from employees);
+
+select * from employees where hire_date="2023-07-01";
+
